@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    {% load static %}
+    <style>
+        *{ padding:0; margin:0;}
+
+        body{
+            background: rgb(131,58,180);
+            background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(255,32,32,1) 100%);
+
+            font-family: 'Do Hyeon', sans-serif;
+        }
+
+        .contents{
+            width:970px;
+            margin:150px auto;
+        }
+
+        .item{
+            display: inline-block;
+            position: relative;
+            width: 300px;
+            margin:50px 8px;
+            border:1px solid white;
+            box-sizing:border-box;
+        }
+
+        .item img{
+            width: 300px;
+            height:400px;
+        }
+        .item .intro{
+            color:white;
+            position:absolute;
+            top:0;
+            left:0;
+            width:300px;
+            height:400px;
+            background:#000;
+            opacity:0;
+            transition:0.8s;
+        }
+        .intro:hover{
+            opacity:0.8;
+        }
+        .title{
+            font-size:x-large;
+            position:relative;
+            top:50px;
+            left:10px;
+        }
+
+        .description{
+            font-size:large;
+            position;relative;
+            top:250px;
+        }
+
+        .nav{
+            position:absolute;
+            top:80px;
+            left:100px;
+        }
+        .nav a{
+            text-decoration: none;
+            color:#eee;
+        }
+        .nav>ul{
+            list-style:none;
+            font-size:xx-large;
+        }
+        .nav>ul>li{
+            display: inline-block;
+            margin: 0px 5px;
+        }
+        .nav>ul>li:hover{
+            border-bottom: 4px solid #eee;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul>
+            <li><a href="{% url 'index' %}">HOME</a></li>
+            <li><a href="{% url 'bookmark_index' %}">BOOKMARK</a></li>
+            <li><a href="{% url 'blog' %}">BLOG</a></li>
+            <li><a href="{% url 'about' %}">ABOUT</a></li>
+        </ul>
+    </div>
+    <div class="contents">
+        {% for object in object_list %}
+        <div class="item">
+            <img src="{{ object.image.url }}" alt="">
+            <div class="intro">
+                <div class="title">{{ object.title }}</div>
+                <div class="description">{{ object.description }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
