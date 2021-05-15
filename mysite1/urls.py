@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 
 from mysite1.views import IndexView, AboutView, UserCreateView, UserCreateDoneTV
-from bookmark.views import BookmarkLV, BookmarkDV
+from bookmark.views import BookmarkLV, BookmarkDV, BookmarkCV, BookmarkUV, BookmarkRV
 
 from blog.views import PostLV
 from django.conf.urls.static import static
@@ -26,7 +26,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',IndexView.as_view(),name="index"),
     path('bookmark/',BookmarkLV.as_view(),name='bookmark_index'),
+    path('bookmark/create',BookmarkCV.as_view(),name='bookmark_create'),
+    path('bookmark/delete/<pk>',BookmarkRV.as_view(),name='bookmark_delete'),
+    path('bookmark/update/<pk>', BookmarkUV.as_view(), name='bookmark_update'),
     path('bookmark/<pk>',BookmarkDV.as_view(),name='bookmark_detail'),
+
     path('about/',AboutView.as_view(),name="about"),
     path('accounts/',include('django.contrib.auth.urls')),
     path('blog/',PostLV.as_view(),name="blog"),

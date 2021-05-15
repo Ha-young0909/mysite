@@ -1,9 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <title>BOOKMARK LIST</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
         *{padding:0; margin: 0;}
         body{
@@ -15,7 +21,7 @@
         align-items:center;
         background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(255,32,32,1) 100%);
         }
-        a{
+        ul a{
             display:inline-block;
             text-decoration:none;
             width:250px;
@@ -26,7 +32,7 @@
             padding:10px 0;
             transition: 0.5s;
         }
-        a:hover{
+        ul a:hover{
             background:rgba(0, 0, 0, 1);
             color:#fff;
             font-style:oblique;
@@ -41,13 +47,27 @@
         list-style:none;
         }
 
+        .icon{
+            font-size:50px;
+            color:#fff;
+        }
     </style>
+
 </head>
+
 <body>
+
     <ul>
     {% for obj in object_list %}
         <li><a href="{% url 'bookmark_detail' obj.id %}">{{obj.title}}</a></li>
     {% endfor %}
     </ul>
+
+    <a class="icon" href="{% url 'bookmark_create' %}">
+        <i class="fa fa-cloud-upload"></i>
+
+    </a>
+
 </body>
+
 </html>

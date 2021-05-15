@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>BOOKMARK DETAIL</title>
         <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
     <style>
         *{padding:0; margin: 0;}
         body{
@@ -29,6 +31,13 @@
 </head>
 <body>
     <div class="contents">
+        <a href="{% url 'bookmark_update' bookmark.id %}">
+            <i class="fa fa-plus-circle"></i>
+        </a>
+        <a href="{% url 'bookmark_delete' bookmark.id %}">
+            <i class="fa fa-minus-circle"></i>
+        </a>
+
         <a href="{% url 'index' %}" class="about">HOME</a>
         <b>< {{object.title}} ></b>
         <a href="{{object.url}}" target="_blank"> LINK </a>

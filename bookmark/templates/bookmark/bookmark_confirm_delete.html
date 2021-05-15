@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <style>
+        *{padding:0; margin: 0;}
+        body{
+        font-family: 'Do Hyeon', sans-serif;
+        background: rgb(131,58,180);
+        background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(255,32,32,1) 100%);
+        }
+        .contents{
+            display:flex;
+            width:100%;
+            height:100vh;
+            justify-content: center;
+            align-items:center;
+            font-size:x-large;
+            text-align:center;
+        }
+        .style{
+            margin-bottom:10px;
+        }
+        button{
+        width:20%;
+        }
+        .contents input{
+            height:25px;
+
+        }
+        a{
+        text-decoration:none;
+        color:#000;
+        }
+
+    </style>
+</head>
+<body>
+<div class="contents">
+
+<form action="./{{bookmark.id}}" method="post">{% csrf_token %}
+    <h10>TITLE : {{bookmark.title}}</h10>
+    <h10>URL : {{ bookmark.url }}</h10>
+    <h1>ARE YOU SURE FOR DELETE??</h1>
+    <button type="submit">DELETE</button>
+    <button type="button"><a href="{% url 'bookmark_detail' bookmark.id %}">NO</a></button>
+
+</form>
+    </div>
+</body>
+</html>
